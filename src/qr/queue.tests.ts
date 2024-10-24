@@ -5,7 +5,7 @@ import { v4 as uuid } from 'uuid';
 import { StatusEnum } from './dtos/status.enum';
 
 describe('Queue Tests', () => {
-    test('insert() -> valid item -> OK', async () => {
+    test('insert(), getById(), updateStatus() -> OK', async () => {
         // Arrange
         const queue = new Queue();
         const id = uuid();

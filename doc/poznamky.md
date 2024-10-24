@@ -1,0 +1,2 @@
+- online base64 encoder: https://www.base64-image.de
+- online qr code generator: https://www.qr-code-generator.com

@@ -4,7 +4,8 @@
     "start": "nest start --watch",
     "test": "jest",
     "test:debug1": "jest -t QrDecoder",
-    "test:debug2": "jest -t Queue"
+    "test:debug2": "jest -t Queue",
+    "test:debug3": "jest -t ItemProcessor"
   },
   "dependencies": {
     "@nestjs/common": "^10.4.6",
