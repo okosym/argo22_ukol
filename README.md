@@ -4,6 +4,7 @@
 - pro úvodní naistalování balíčků spustit `npm install`
 - následně spustit pomocí `npm start`
   - násleně běží na http://localhost:3000
+  - api dokumentace dostupna na http://localhost:3000/api (swagger)
   - endpointy
     - POST: `http://localhost:3000/qr/upload`
         - zařadí request do fronty, spustí se zpracování (nečeká se na výsledek), vrátí se `id`
@@ -27,7 +28,6 @@
 }
 ```
 - neřešil jsem odchytávání výjimky v Exception Filteru
-- swagger api jsem neřešil
 
 ## Hlavní třídy
 - `QrController` - controller obsahující endpointy, v controlleru se provádí validace a následně  se volá metoda fasády
