@@ -1,12 +1,13 @@
-import { BadRequestException, Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 import { UploadQrDTO } from "./dtos/upload-qr.dto";
 import { Result } from "../shared/result";
 import { ValidationService } from "../shared/validation.service";
 import { QrFacade } from "./qr.facade";
 import { StatusEnum } from "./dtos/status.enum";
 import { plainToClass } from "class-transformer";
+import { Route, Tags } from "tsoa";
 
-@Controller('qr')
+@Controller('qr') @Route('qr') @Tags('qr')
 export class QrController {
     // Constructor
     constructor(
