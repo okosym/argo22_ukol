@@ -1,7 +1,10 @@
 import { validate, ValidationError, ValidatorOptions } from "class-validator";
 import { Result } from "./result";
 import { isUUID } from "class-validator";
+import { plainToClass } from "class-transformer";
+import { Injectable } from "@nestjs/common";
 
+@Injectable()
 export class ValidationService {
     
     // Methods

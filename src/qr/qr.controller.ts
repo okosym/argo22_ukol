@@ -3,6 +3,8 @@ import { UploadQrDTO } from "./dtos/upload-qr.dto";
 import { Result } from "../shared/result";
 import { ValidationService } from "../shared/validation.service";
 import { QrFacade } from "./qr.facade";
+import { StatusEnum } from "./dtos/status.enum";
+import { plainToClass } from "class-transformer";
 
 @Controller('qr')
 export class QrController {
@@ -15,37 +17,29 @@ export class QrController {
     @Post('upload')
     async upload(@Body() body: UploadQrDTO): Promise<Result<string>> {
         // validate body
-        const validationResult: Result = await this._validationService.validate(body);
+        const obj = plainToClass(UploadQrDTO, body);
+        const validationResult: Result = await this._validationService.validate(obj);
         if (!validationResult.success)
             return Result.fail<string>(validationResult.errors);
 
         // call facade method
-        const result = await this._qrFacade.upload(body);
+        const result = await this._qrFacade.upload(obj);
         
         // return result
         return result;
     }
 
     @Get('getResult/:id')
-    async getResult(@Param('id') id: string): Promise<Result<string>> {
+    async getResult(@Param('id') id: string): Promise<Result<StatusEnum>> {
         // validate id
         const validationResult: Result = this._validationService.validateUUID(id, 'id');
         if (!validationResult.success)
-            return Result.fail<string>(validationResult.errors);
+            return Result.fail<StatusEnum>(validationResult.errors);
         
         // call facade method
-        const result = await this._qrFacade.getResult(id);
+        const result: Result<StatusEnum> = await this._qrFacade.getResult(id);
         
         // return result
         return result;
     }
-
-    // // if(result.success == true) -> return 200 (http code), otherwise return 500 (http code)
-    // private _createResult<T>(result: Result<T>) {
-    //     if (result.success)
-    //         return result;
-    //     else
-    //         throw new BadRequestException(result);
-    // }
-
 }

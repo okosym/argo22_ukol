@@ -1,7 +1,9 @@
 import sharp from "sharp";
 import { Result } from "../shared/result";
 import jsQR, { QRCode } from "jsqr";
+import { Injectable } from "@nestjs/common";
 
+@Injectable()
 export class QrDecoder {
     /**
      * Decodes base64 string containing qr code to plain string
@@ -10,7 +12,7 @@ export class QrDecoder {
     async decode(qrBase64Str: string): Promise<Result<string>> {
         try {
             // strip out the prefix if it exists
-            const base64Data = qrBase64Str.replace(/^data:image\/.{3,4};base64,/, '');
+            const base64Data = this._removePrefix(qrBase64Str);
             
             // decode base64 string to buffer
             const buffer = Buffer.from(base64Data, 'base64');
@@ -30,6 +32,10 @@ export class QrDecoder {
                 return Result.fail<string>([error.message]);
             throw error;
         }
+    }
 
+    private _removePrefix(qrBase64Str: string): string {
+        var str = qrBase64Str.replace(/^data:image\/.{3,4};base64,/, '');
+        return str;
     }
 }

@@ -1,9 +1,11 @@
+import { Injectable } from "@nestjs/common";
 import { Result } from "../shared/result";
 import { QueueItem } from "./dtos/queue-item";
 import { StatusEnum } from "./dtos/status.enum";
 import { QrDecoder } from "./qr.decoder";
 import { Queue } from "./queue";
 
+@Injectable()
 export class ItemProcessor {
 
     // Constructor

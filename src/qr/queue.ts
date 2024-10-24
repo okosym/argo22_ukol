@@ -2,7 +2,9 @@ import Database from 'better-sqlite3';
 import { Result } from "../shared/result";
 import { QueueItem } from "./dtos/queue-item";
 import { StatusEnum } from './dtos/status.enum';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class Queue {
     // Properties
     private _db: Database.Database;
