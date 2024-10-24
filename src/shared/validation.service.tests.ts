@@ -81,7 +81,7 @@ describe('ValidationService Tests', () => {
 
         // Act
         const result =  validationService.validateUUID(id, 'id');
-        console.log(result);
+        //console.log(result);
 
         // Assert
         expect(result.success == false);
@@ -94,7 +94,7 @@ describe('ValidationService Tests', () => {
 
         // Act
         const result =  validationService.validateUUID(id, 'id');
-        console.log(result);
+        //console.log(result);
 
         // Assert
         expect(result.success == false);
