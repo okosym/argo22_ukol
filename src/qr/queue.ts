@@ -17,7 +17,8 @@ export class Queue {
 
     // Private Methods
     private _open(): Database.Database {
-        return new Database('queue.db', { verbose: console.log });
+        //return new Database('queue.db', { verbose: console.log });
+        return new Database('queue.db');
     }
 
     private _initialize(): void {
