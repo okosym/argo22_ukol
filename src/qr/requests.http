@@ -1,0 +1,11 @@
+### Upload QR code
+POST http://localhost:3000/qr/upload
+content-type: application/json
+
+{
+    "qr": "..."
+}
+
+### Get result
+GET http://localhost:3000/qr/getResult/9f137d35-1135-485e-af3c-30532c191357
+
